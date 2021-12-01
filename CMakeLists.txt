@@ -3,4 +3,5 @@ project(learn-cpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
+add_subdirectory(tests)
 add_subdirectory(01-invert-list)

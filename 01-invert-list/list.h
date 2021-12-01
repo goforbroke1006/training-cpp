@@ -6,6 +6,7 @@
 #define INVERT_LIST_LIST_H
 
 #include <iterator>
+#include <sstream>
 
 template<typename T>
 class Node {
@@ -47,7 +48,13 @@ public:
     public:
         explicit ListIterator(Node<T> *node) : node(node) {}
 
-        bool operator!=(ListIterator other) { return this->node != other.node; }
+        bool operator==(ListIterator other) {
+            return this->node == other.node;
+        }
+
+        bool operator!=(ListIterator other) {
+            return this->node != other.node;
+        }
 
         ListIterator &operator++() {
             this->node = this->node->getNext();
@@ -62,7 +69,7 @@ public:
         Node<T> *node;
     };
 
-    explicit List() = default;
+    explicit List() : mHead(nullptr), mTail(nullptr), mSize(0) {}
 
     void push(T value) {
         auto *node = new Node<T>(value);
@@ -73,13 +80,25 @@ public:
             this->mTail->setNext(node);
         }
         this->mTail = node;
+
+        ++this->mSize;
     }
 
-    ListIterator begin() { return ListIterator(this->mHead); }
+    ListIterator begin() const {
+        return ListIterator(this->mHead);
+    }
 
-    ListIterator end() { return ListIterator(nullptr); }
+    ListIterator end() const { return ListIterator(nullptr); }
+
+    size_t size() const {
+        return mSize;
+    }
 
     void invert() {
+        if (this->mHead == nullptr) { // empty list
+            return;
+        }
+
         Node<T> *prev = nullptr;
         Node<T> *current = this->mHead;
 
@@ -102,6 +121,22 @@ public:
 private:
     Node<T> *mHead;
     Node<T> *mTail;
+    size_t mSize;
 };
+
+template<typename T>
+std::string to_string(const List<T> &list) {
+    static std::string delimiter = ", ";
+
+    std::ostringstream ss;
+    for (const auto it: list) {
+        ss << (*it) << delimiter;
+    }
+    std::string res = ss.str();
+    if (list.size() > 0) {
+        res = res.substr(0, res.length() - delimiter.length());
+    }
+    return res;
+}
 
 #endif //INVERT_LIST_LIST_H

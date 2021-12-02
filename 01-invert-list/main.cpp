@@ -1,8 +1,8 @@
 #include <iostream>
-#include "list.h"
+#include "./inverted-list.h"
 
 int main() {
-    List<int> ints{};
+    InvertedList<int> ints{};
     ints.push(1);
     ints.push(2);
     ints.push(3);

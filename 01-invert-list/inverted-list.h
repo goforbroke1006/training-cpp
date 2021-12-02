@@ -17,21 +17,22 @@ public:
 
         mystd::Node<T> *prev = nullptr;
         mystd::Node<T> *current = this->mHead;
+        mystd::Node<T> *next;
 
         while (true) {
             // remember next before erasing
-            mystd::Node<T> *nextCurrent = current->getNext();
+            next = current->getNext();
 
             // erase next, write prev as next
             current->setNext(prev);
 
-            if (!nextCurrent) {
+            if (nullptr == next) {
                 break;
             }
 
             // shift
             prev = current;
-            current = nextCurrent;
+            current = next;
         }
 
         this->mHead = current;

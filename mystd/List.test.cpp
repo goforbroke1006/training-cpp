@@ -5,10 +5,11 @@
 #include <gtest/gtest.h>
 
 #include "List.h"
+#include "Utils.h"
 
 TEST(List_to_string, Positive_Empty) {
         mystd::List<char> list{};
-        ASSERT_EQ("", to_string(list));
+        ASSERT_EQ("", mystd::to_string(list));
 }
 
 TEST(List_Push, Positive_Full) {
@@ -18,7 +19,7 @@ TEST(List_Push, Positive_Full) {
         list.push('l');
         list.push('l');
         list.push('o');
-        ASSERT_EQ("h, e, l, l, o", to_string(list));
+        ASSERT_EQ("h, e, l, l, o", mystd::to_string(list));
 }
 
 TEST(List_Size, Positive_Empty) {

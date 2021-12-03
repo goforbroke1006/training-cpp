@@ -6,7 +6,6 @@
 #define INVERT_LIST_LIST_H
 
 #include <iterator>
-#include <sstream>
 
 namespace mystd {
 
@@ -124,21 +123,6 @@ namespace mystd {
         Node<T> *mTail;
         size_t mSize;
     };
-
-    template<typename T>
-    std::string to_string(const List<T> &list) {
-        static std::string delimiter = ", ";
-
-        std::ostringstream ss;
-        for (const auto it: list) {
-            ss << (*it) << delimiter;
-        }
-        std::string res = ss.str();
-        if (list.size() > 0) {
-            res = res.substr(0, res.length() - delimiter.length());
-        }
-        return res;
-    }
 
 }
 

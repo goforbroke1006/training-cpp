@@ -3,8 +3,8 @@
 //
 // https://en.wikipedia.org/wiki/Linked_list#Doubly_linked_list
 
-#ifndef LEARN_CPP_LINKEDLIST_H
-#define LEARN_CPP_LINKEDLIST_H
+#ifndef LEARN_CPP_LINKED_LIST_H
+#define LEARN_CPP_LINKED_LIST_H
 
 namespace my_std {
 
@@ -60,7 +60,7 @@ namespace my_std {
 
             ++this->mSize;
 
-            if (nullptr == this->mHead && nullptr == this->mTail) {
+            if (this->empty()) {
                 this->mHead = node;
                 this->mTail = node;
                 return;
@@ -77,7 +77,7 @@ namespace my_std {
 
             ++this->mSize;
 
-            if (nullptr == this->mHead && nullptr == this->mTail) {
+            if (this->empty()) {
                 this->mHead = node;
                 this->mTail = node;
                 return;
@@ -92,7 +92,7 @@ namespace my_std {
             if (this->empty()) {
                 throw std::runtime_error("empty list");
             }
-            if (this->mHead == this->mTail) {
+            if (this->one()) {
                 T value = this->mTail->operator*();
                 --this->mSize;
                 delete this->mTail;
@@ -117,7 +117,7 @@ namespace my_std {
             if (this->empty()) {
                 throw std::runtime_error("empty list");
             }
-            if (this->mHead == this->mTail) {
+            if (this->one()) {
                 T value = this->mHead->operator*();
                 --this->mSize;
                 delete this->mHead;
@@ -144,6 +144,10 @@ namespace my_std {
 
         bool empty() const {
             return nullptr == this->mHead && nullptr == this->mTail;
+        }
+
+        bool one() const {
+            return nullptr != this->mHead && this->mHead == this->mTail;
         }
 
     protected:
@@ -189,4 +193,4 @@ namespace my_std {
 
 }
 
-#endif //LEARN_CPP_LINKEDLIST_H
+#endif //LEARN_CPP_LINKED_LIST_H

@@ -11,7 +11,7 @@ template<typename T>
 class InvertedLinkedList : public my_std::LinkedList<T> {
 public:
     void invert() {
-        if (this->empty() || this->mHead == this->mTail) {
+        if (this->empty() || this->one()) {
             return;
         }
 

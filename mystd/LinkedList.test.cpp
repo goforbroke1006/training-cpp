@@ -7,6 +7,35 @@
 #include "LinkedList.h"
 #include "Utils.h"
 
+TEST(LinkedList_Empty, Positive_Empty) {
+    my_std::LinkedList<int> list{};
+    ASSERT_EQ(true, list.empty());
+}
+
+TEST(LinkedList_Empty, Positive_Full) {
+    my_std::LinkedList<int> list{};
+    list.push_front(1);
+    ASSERT_EQ(false, list.empty());
+}
+
+TEST(LinkedList_One, Positive_Empty) {
+    my_std::LinkedList<int> list{};
+    ASSERT_EQ(false, list.one());
+}
+
+TEST(LinkedList_One, Positive_One) {
+    my_std::LinkedList<int> list{};
+    list.push_back(1);
+    ASSERT_EQ(true, list.one());
+}
+
+TEST(LinkedList_One, Positive_MoreThanOne) {
+    my_std::LinkedList<int> list{};
+    list.push_back(1);
+    list.push_back(1);
+    ASSERT_EQ(false, list.one());
+}
+
 TEST(LinkedList_Size, Positive_Empty) {
     my_std::LinkedList<int> list{};
     ASSERT_EQ(0, list.size());

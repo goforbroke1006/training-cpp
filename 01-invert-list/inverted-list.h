@@ -8,16 +8,16 @@
 #include "../mystd/List.h"
 
 template<typename T>
-class InvertedList : public mystd::List<T> {
+class InvertedList : public my_std::List<T> {
 public:
     void invert() {
         if (this->mHead == nullptr) { // empty list
             return;
         }
 
-        mystd::Node<T> *prev = nullptr;
-        mystd::Node<T> *current = this->mHead;
-        mystd::Node<T> *next;
+        my_std::Node<T> *prev = nullptr;
+        my_std::Node<T> *current = this->mHead;
+        my_std::Node<T> *next;
 
         while (true) {
             // remember next before erasing

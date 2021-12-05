@@ -7,7 +7,7 @@
 
 #include <iterator>
 
-namespace mystd {
+namespace my_std {
 
     template<typename T>
     class Node {
@@ -70,7 +70,7 @@ namespace mystd {
             Node<T> *node;
         };
 
-        explicit List() : mHead(nullptr), mTail(nullptr), mSize(0) {}
+        explicit List() : mHead(nullptr), mSize(0) {}
 
         void push(T value) {
             auto *node = new Node<T>(value);
@@ -120,7 +120,6 @@ namespace mystd {
 
     protected:
         Node<T> *mHead;
-        Node<T> *mTail;
         size_t mSize;
     };
 

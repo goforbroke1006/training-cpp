@@ -11,9 +11,14 @@ template<typename T>
 class InvertedLinkedList : public my_std::LinkedList<T> {
 public:
     void invert() {
+        if (this->empty() || this->mHead == this->mTail) {
+            return;
+        }
+
         typename my_std::LinkedList<T>::Node *prev = nullptr;
         typename my_std::LinkedList<T>::Node *curr = this->mHead;
         typename my_std::LinkedList<T>::Node *next = nullptr;
+        typename my_std::LinkedList<T>::Node *tail = this->mHead;
 
         while (true) {
             // remember before erasing
@@ -23,14 +28,15 @@ public:
             curr->setPrev(next);
 
             if (nullptr == next) {
-                return;
+                break;
             }
 
             prev = curr;
             curr = next;
         }
 
-        // TODO:
+        this->mTail = tail;
+        this->mHead = curr;
     }
 };
 

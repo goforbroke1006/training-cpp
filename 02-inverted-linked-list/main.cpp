@@ -4,36 +4,26 @@
 
 #include <iostream>
 
-#include "../mystd/LinkedList.h"
+#include "inverted-linked-list.h"
 #include "../mystd/Utils.h"
 
 int main() {
-//    {
-//        my_std::LinkedList<char> list{};
-//        list.push_back('H');
-//        list.push_back('e');
-//        list.push_back('l');
-//        list.push_back('l');
-//        list.push_back('o');
-//        list.push_back('!');
-//
-//        std::cout << "Linked list:" << std::endl;
-//        std::cout << "  " << my_std::to_string(list) << std::endl;
-//    }
+    InvertedLinkedList<char> list{};
+    list.push_back('a');
+    list.push_back('b');
+    list.push_back('c');
+    list.push_back('d');
+    list.push_back('e');
 
-    {
-        my_std::LinkedList<char> list{};
-        list.push_back('a');
-        list.push_back('b');
-        list.push_back('c');
-        list.push_back('d');
-        list.push_back('e');
-        list.pop_front();
-        list.pop_front();
+    std::cout << "Linked list:" << std::endl;
+    std::cout << "  " << my_std::to_string(list) << std::endl;
 
-        std::cout << "Linked list:" << std::endl;
-        std::cout << "  " << my_std::to_string(list) << std::endl;
-    }
+    list.invert();
+    std::cout << "inverting..." << std::endl;
+
+    std::cout << "Linked list:" << std::endl;
+    std::cout << "  " << my_std::to_string(list) << std::endl;
+
 
     return 0;
 }

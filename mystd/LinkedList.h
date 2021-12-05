@@ -1,6 +1,7 @@
 //
 // Created by goforbroke on 05.12.2021.
 //
+// https://en.wikipedia.org/wiki/Linked_list#Doubly_linked_list
 
 #ifndef LEARN_CPP_LINKEDLIST_H
 #define LEARN_CPP_LINKEDLIST_H

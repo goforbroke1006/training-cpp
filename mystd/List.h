@@ -1,6 +1,7 @@
 //
 // Created by goforbroke on 25.11.2021.
 //
+// https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list
 
 #ifndef INVERT_LIST_LIST_H
 #define INVERT_LIST_LIST_H

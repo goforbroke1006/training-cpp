@@ -17,36 +17,19 @@ void swap(int &el1, int &el2) {
     ++swap_calls;
 }
 
-int partition(int *arr, int start, int end) {
-    int pivot = arr[start];
-
-    // Find good position for pivot
-    int count = 0;
-    for (int i = start + 1; i <= end; i++) {
-        if (arr[i] <= pivot)
-            count++;
+int partition(int *arr, int low, int high) {
+    int pivot = arr[(low + high) / 2];
+    int i = low;
+    int j = high;
+    while (true) {
+        while (arr[i] < pivot) ++i;
+        while (arr[j] > pivot) --j;
+        if (i >= j)
+            return j;
+        swap(arr[i], arr[j]);
+        ++i;
+        --j;
     }
-
-    // Giving pivot element its correct position
-    int pivotIndex = start + count;
-    swap(arr[pivotIndex], arr[start]);
-
-    // Sorting left and right parts of the pivot element
-    int i = start, j = end;
-
-    while (i < pivotIndex && j > pivotIndex) {
-        while (arr[i] <= pivot) i++;
-        while (arr[j] > pivot) j--;
-
-        if (i < pivotIndex && j > pivotIndex) {
-            swap(arr[i], arr[j]);
-        }
-
-        i++;
-        j--;
-    }
-
-    return pivotIndex;
 }
 
 void quick_sort(int *arr, int low, int high) {
@@ -55,8 +38,7 @@ void quick_sort(int *arr, int low, int high) {
     }
 
     int pi = partition(arr, low, high);
-
-    quick_sort(arr, low, pi - 1);
+    quick_sort(arr, low, pi);
     quick_sort(arr, pi + 1, high);
 }
 

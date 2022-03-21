@@ -12,4 +12,4 @@ build:
 	cd "${BUILD_DIR}" && make all
 
 test:
-	"${BUILD_DIR}/tests/learn-cpp-tests"
+	cd "${BUILD_DIR}" && make test

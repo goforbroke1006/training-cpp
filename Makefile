@@ -9,7 +9,7 @@ clear:
 
 .ONESHELL:
 build:
-	cmake -S . -B "${BUILD_DIR}" -G Ninja
+	cmake -G Ninja -S . -B "${BUILD_DIR}"
 	cmake --build "${BUILD_DIR}" --target all
 
 .ONESHELL:

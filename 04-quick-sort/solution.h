@@ -18,6 +18,7 @@ void swap(int &el1, int &el2) {
 }
 
 int partition(int *arr, int low, int high) {
+    // SOLUTION
     int pivot = arr[(low + high) / 2];
     int i = low;
     int j = high;
@@ -30,9 +31,11 @@ int partition(int *arr, int low, int high) {
         ++i;
         --j;
     }
+    // ~SOLUTION
 }
 
 void quick_sort(int *arr, int low, int high) {
+    // SOLUTION
     if (low >= high) {
         return;
     }
@@ -40,6 +43,7 @@ void quick_sort(int *arr, int low, int high) {
     int pi = partition(arr, low, high);
     quick_sort(arr, low, pi);
     quick_sort(arr, pi + 1, high);
+    // ~SOLUTION
 }
 
 #endif //LEARN_CPP_SOLUTION_H

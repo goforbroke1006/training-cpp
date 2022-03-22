@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <vector>
 
 #include "domain.h"
 #include "solution.h"
@@ -10,29 +11,49 @@
 template<typename T>
 void print(Node<T> *const list) {
     Node<T> *current = list;
-    while (true) {
+    while (nullptr != current) {
         std::cout << current->value << " ";
         current = current->next;
-
-        if (nullptr == current) {
-            break;
-        }
     }
     std::cout << std::endl;
 }
 
+template<typename T, typename ... Ts>
+Node<T> *create_list(Ts ... args) {
+    auto *list = new Node<T>();
+    Node<T> *last = list;
+
+    std::vector<T> vec = {args...};
+    for (int i = 0; i < vec.size() - 1; ++i) {
+        last->value = vec[i];
+        last->next = new Node<T>();
+        last = last->next;
+    }
+
+    last->value = vec[vec.size() - 1];
+
+    return list;
+}
+
+template<typename T>
+void delete_list(Node<T> *&list) {
+    Node<T> *tmp;
+    while (nullptr != list) {
+        tmp = list;
+        delete tmp;
+        list = list->next;
+    }
+}
+
 int main() {
-    auto *list = new Node<int>(0);
-    list->next = new Node<int>(1);
-    list->next->next = new Node<int>(2);
-    list->next->next->next = new Node<int>(3);
-    list->next->next->next->next = new Node<int>(4);
-    list->next->next->next->next->next = new Node<int>(5);
-    list->next->next->next->next->next->next = new Node<int>(6);
+    auto *list = create_list<int>(0, 1, 2, 3, 4, 5, 6);
 
     print(list);
-    auto *rl = reverse(list);
-    print(rl);
+    auto *reversed = reverse(list);
+    print(reversed);
+
+    delete_list(reversed);
+    delete_list(list);
 
     return 0;
 }

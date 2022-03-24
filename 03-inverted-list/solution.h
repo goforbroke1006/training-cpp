@@ -6,6 +6,7 @@
 
 template<typename T>
 Node<T> *reverse(Node<T> *list) {
+    // SOLUTION
     Node<T> *reversed = nullptr;
     for (Node<T> *node = list, *next = nullptr; nullptr != node; node = next) {
         next = node->next;
@@ -13,4 +14,5 @@ Node<T> *reverse(Node<T> *list) {
         reversed = node;
     }
     return reversed;
+    // ~SOLUTION
 }

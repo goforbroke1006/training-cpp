@@ -20,3 +20,8 @@ test:
 setup:
 	bash ./install-build-tools.sh
 	bash ./install-gtest.sh
+
+start:
+	echo "Remove solution from random file!"
+	echo "Be ready to fix it!"
+	find ./ -type f -iregex '.*\.\(h\|cpp\)' -exec grep {} -e '// SOLUTION' -l \; | sort -R | xargs -I python start.py {}

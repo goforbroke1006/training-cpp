@@ -27,6 +27,7 @@ int partition(int *arr, int low, int high) {
         while (arr[j] > pivot) --j;
         if (i >= j)
             return j;
+
         swap(arr[i], arr[j]);
         ++i;
         --j;
@@ -36,9 +37,8 @@ int partition(int *arr, int low, int high) {
 
 void quick_sort(int *arr, int low, int high) {
     // SOLUTION
-    if (low >= high) {
+    if (low >= high)
         return;
-    }
 
     int pi = partition(arr, low, high);
     quick_sort(arr, low, pi);

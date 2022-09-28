@@ -36,12 +36,12 @@ Node<T> *create_list(Ts ... args) {
 }
 
 template<typename T>
-void delete_list(Node<T> *&list) {
-    Node<T> *tmp;
-    while (nullptr != list) {
-        tmp = list;
-        delete tmp;
-        list = list->next;
+void delete_list(Node<T> *list) {
+    Node<T> *curr = list, *next;
+    while (nullptr != curr) {
+        next = curr->next;
+        delete curr;
+        curr = next;
     }
 }
 
@@ -53,7 +53,6 @@ int main() {
     print(reversed);
 
     delete_list(reversed);
-    delete_list(list);
 
     return 0;
 }

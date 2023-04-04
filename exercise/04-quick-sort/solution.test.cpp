@@ -2,7 +2,7 @@
 // Created by goforbroke on 21.03.2022.
 //
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 #include "solution.h"
 

@@ -40,8 +40,10 @@ add_subdirectory(exercise/03-inverted-list)
 add_subdirectory(exercise/04-quick-sort)
 add_subdirectory(exercise/05-two-num-sum)
 add_subdirectory(exercise/06-two-num-nearest-sum)
+add_subdirectory(exercise/07-merge-sort)
 
 add_subdirectory(algorithms-for-beginners-book/ch-1-quote-span)
+
 
 enable_testing()
 add_subdirectory(tests)
